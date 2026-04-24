@@ -34,7 +34,7 @@ def launch_setup(context):
     robot_gazebo_path = os.path.join(get_package_share_directory('robot_gazebo'))
 
     xacro_file = os.path.join(robot_gazebo_path, 'urdf', 'robot.gazebo.xacro')
-    controller_config_file = os.path.join(robot_gazebo_path, 'config', 'robot_cofig.yaml')
+    controller_config_file = os.path.join(robot_gazebo_path, 'config', 'robot_config.yaml')
 
     
     robot_state_publisher_node = Node(
@@ -95,12 +95,13 @@ def launch_setup(context):
         package='ros_ign_gazebo',
         executable='create',
         output='screen',
-        arguments=['-topic', 'robot_description',
-                    # '-name', 'jetauto',
-                    '-allow_renaming', 'true',
-                    '-x', '0',
-                    '-y', '0'
-                    ],
+        arguments=[
+                     '-topic', 'robot_description',
+                     '-allow_renaming', 'true',
+                     '-x', '-0.20',
+                     '-y', '0.00',
+                     '-z', '0.75'
+                     ],
         parameters=[
             {"use_sim_time": True}],
     )
